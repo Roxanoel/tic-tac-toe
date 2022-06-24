@@ -33,6 +33,21 @@ var gameBoard = (() => {
         _boardCells[cellIndex].appendChild(cellContent);
     }
 
+    ////////////
+    // PUBLIC //
+    ////////////
+
+    // This function clears the board
+    function _clearBoard() {
+        _boardCells.forEach((cell) => {
+            while (cell.lastChild) {
+                cell.removeChild(cell.lastChild);
+            }
+        })
+    }
+
+    return {clearBoard: ()=> {_clearBoard()}};
+
 })();
 
 //#endregion
