@@ -27,12 +27,12 @@ body {
     justify-self: center;
 }
 
-.tokenA {
+.tokenA::before {
     content: "x";
     font-size: 80;
 }
 
-.tokenB {
+.tokenB::before {
     content: "o";
     font-size: 80;
 }
