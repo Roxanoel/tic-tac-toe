@@ -22,7 +22,7 @@ body {
     border: 1px solid grey;
 }
 
-.tokenA, tokenB {
+.tokenA, .tokenB {
     align-self: center;
     justify-self: center;
     font-size: 80px;
