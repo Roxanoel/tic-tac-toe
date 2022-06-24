@@ -59,5 +59,7 @@ const playerFactory = (name, token) => {
 //#endregion
 
 //#region Game Manager module
-
+    const gameManager = (() => {
+        // Logic goes here
+    })();
 //#endregion
