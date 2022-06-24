@@ -51,3 +51,9 @@ var gameBoard = (() => {
 })();
 
 //#endregion
+
+//#region Player factory
+    const playerFactory = (name, token) => { 
+        return {name, token};
+    }
+//#endregion
