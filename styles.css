@@ -25,14 +25,13 @@ body {
 .tokenA, tokenB {
     align-self: center;
     justify-self: center;
+    font-size: 80px;
 }
 
 .tokenA::before {
     content: "x";
-    font-size: 80;
 }
 
 .tokenB::before {
     content: "o";
-    font-size: 80;
 }
