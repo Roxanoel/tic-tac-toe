@@ -1,6 +1,6 @@
 //#region Game board module
 
-var gameBoard = (() => {
+const gameBoard = (() => {
     'use strict';
 
     //////////////
@@ -53,7 +53,11 @@ var gameBoard = (() => {
 //#endregion
 
 //#region Player factory
-    const playerFactory = (name, token) => { 
-        return {name, token};
-    }
+const playerFactory = (name, token) => { 
+    return {name, token};
+}
+//#endregion
+
+//#region Game Manager module
+
 //#endregion
