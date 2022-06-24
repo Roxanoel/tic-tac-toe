@@ -1,0 +1,38 @@
+:root {
+
+}
+
+body {
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 4rem fit-content 2rem;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    border: none;
+    height: 90vh;
+}
+
+.board-cell {
+    border: 1px solid grey;
+}
+
+.tokenA, tokenB {
+    align-self: center;
+    justify-self: center;
+}
+
+.tokenA {
+    content: "x";
+    font-size: 80;
+}
+
+.tokenB {
+    content: "o";
+    font-size: 80;
+}
