@@ -85,7 +85,6 @@ const gameManager = (() => {
 
     function _nextTurn() {
         _isPlayer1Turn = !_isPlayer1Turn;
-        console.log(_isPlayer1Turn);
     }
 
     return {
