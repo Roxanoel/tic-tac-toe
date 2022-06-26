@@ -59,7 +59,43 @@ const playerFactory = (name, token) => {
 //#endregion
 
 //#region Game Manager module
-    const gameManager = (() => {
-        // Logic goes here
-    })();
+const gameManager = (() => {
+    'use strict';
+    
+    ////////////////
+    // Local state//
+    ////////////////
+
+    const _player1 = playerFactory("Player 1", "tokenA");
+    const _player2 = playerFactory("Player 2", "tokenB");
+
+    let _isPlayer1Turn = true;  // Initialized as true because Player 1 goes first, could change.
+
+    ///////////////////////
+    // Private functions //
+    ///////////////////////
+
+    function _winGame() {
+        // Add logic later
+    }
+
+    ////////////
+    // PUBLIC //
+    ////////////
+
+    function _nextTurn() {
+        _isPlayer1Turn = !_isPlayer1Turn;
+        console.log(_isPlayer1Turn);
+    }
+
+    return {
+        getCurrentPlayer: () => { return (_isPlayer1Turn ? _player1 : _player2) },
+        nextTurn: () => {_nextTurn();}
+    };
+
+})();
+//#endregion
+
+//#region Global 
+
 //#endregion
