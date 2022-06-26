@@ -20,7 +20,7 @@ const gameBoard = (() => {
        // Early return if the cell already has a token in it.
        if (_clickedCell.hasChildNodes()) return;
        // Otherwise, calls the _addToken function.
-       _addTokenToCell("tokenA", _clickedCell.dataset.index) // Will eventually get ref to the token from player
+       _addTokenToCell(gameManager.getCurrentPlayer().token, _clickedCell.dataset.index) // Will eventually get ref to the token from player
     }
 
     // This function adds a token to an empty cell.
@@ -31,6 +31,9 @@ const gameBoard = (() => {
 
         // Appending element to the correct cell
         _boardCells[cellIndex].appendChild(cellContent);
+
+        // Registers that it is the other player's turn; could be done with event later!
+        gameManager.nextTurn();
     }
 
     ////////////
