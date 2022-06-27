@@ -52,6 +52,7 @@ const gameBoard = (() => {
     // Checking for win //
     //////////////////////
 
+    // Checks for a win for the player whose turn it is
     function _checkForWin() {
         let conditionFulfilled = false;
 
@@ -65,19 +66,20 @@ const gameBoard = (() => {
     }
 
     function _checkEveryCell(array) {
-        const token = gameManager.getCurrentPlayer().token;
+        const _token = gameManager.getCurrentPlayer().token;
 
-        let testPassed = true; // Will change to false as soon as an element other than specified token is found
+        let _testPassed = true; // Will change to false as soon as an element other than specified token is found
 
         array.forEach(i => {
             if (!(_boardCells[i].hasChildNodes()) ||
-            !(_boardCells[i].firstChild.classList.contains(token)))  {
-                testPassed = false;
+            !(_boardCells[i].firstChild.classList.contains(_token)))  {
+                _testPassed = false;
             }
         });
 
-        return testPassed;
+        return _testPassed;
 
+        // Code below was not functional because of empty cells, they gave null refs       
         /*array.every(cell => {
             // Checks for empty cells to avoid null ref exceptions
             if (_boardCells[cell].hasChildNodes()) {
@@ -132,19 +134,30 @@ const gameManager = (() => {
     ///////////////////////
 
     function _winGame() {
-        // Add logic later
+        alert(`${_getCurrentPlayer().name} won!`);
+        
     }
 
     ////////////
     // PUBLIC //
     ////////////
 
+    // Changes turn but checks for a win first.
     function _nextTurn() {
+        // If the game was won, launch game won behaviour and do not change turn.
+        if (gameBoard.checkForWin()) {
+            _winGame();
+            return;
+        }
         _isPlayer1Turn = !_isPlayer1Turn;
     }
 
+    function _getCurrentPlayer() {
+        return (_isPlayer1Turn ? _player1 : _player2);
+    }
+
     return {
-        getCurrentPlayer: () => { return (_isPlayer1Turn ? _player1 : _player2) },
+        getCurrentPlayer: () => { return (_isPlayer1Turn ? _player1 : _player2); },
         nextTurn: () => {_nextTurn();}
     };
 
