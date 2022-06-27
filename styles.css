@@ -1,5 +1,12 @@
 :root {
-
+    /*Color defs*/
+    --eggshell: #F4F1DE;
+    --terracotta: #E07A5F;
+    --rose-taupe: #8F5D5D;
+    --independence-blue: #3D405B;
+    --steel-teal: #5F797B;
+    --green-sheen: #81B29A;
+    --deep-champagne: #F2CC8F;
 }
 
 body {
@@ -10,19 +17,54 @@ body {
     margin: 0;
 }
 
+header {
+    align-self: center;
+    justify-self: center;
+    background-color: var(--deep-champagne);
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--eggshell);
+}
+
+button {
+    padding: 1rem 2rem;
+    border-style: none;
+    border-radius: 10px;
+    margin: 2rem;
+    font-size: 2rem;
+    background-color: --;
+}
+
+footer {
+    background-color: var(--eggshell);
+    height: 100%;
+}
+
 #game-board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     border: none;
-    height: 90vh;
+    height: 50vh;
+    width: 50vh;
+    background-color: var(--independence-blue);
 }
 
 .board-cell {
-    border: 1px solid grey;
+    border: 1px solid var(--eggshell);
 }
 
-.tokenA, tokenB {
+.tokenA, .tokenB {
     align-self: center;
     justify-self: center;
 }
@@ -35,4 +77,14 @@ body {
 .tokenB::before {
     content: "o";
     font-size: 80;
+}
+
+#start-btn {
+    background-color: var(--rose-taupe);
+    color: white;
+}
+
+#clear-btn {
+    background-color: var(--steel-teal);
+    color: white;
 }
