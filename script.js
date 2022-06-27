@@ -8,6 +8,7 @@ const gameBoard = (() => {
     //////////////
 
     const _boardCells = document.querySelectorAll('.board-cell');
+    _boardCells.forEach((cell) => cell.addEventListener('click', _tryAddToken));
 
     const _clearBtn = document.querySelector('#clear-btn');
     _clearBtn.addEventListener('click', _clearBoard);
@@ -28,19 +29,12 @@ const gameBoard = (() => {
     // DOM methods//
     ////////////////
 
-    // This function adds listeners to grid cells
-    function _addCellListeners() {
-        _boardCells.forEach((cell) => cell.addEventListener('click', _tryAddToken));
-    }
-
-    // This function removes the listeners from grid cells
-    function _removeCellListeners() {
-        _boardCells.forEach((cell) => cell.removeEventListener('click', _tryAddToken));
-    }
-
     // This function checks if the cell is empty before adding a token.
     function _tryAddToken(event) {
-       const _clickedCell = event.target;
+       // If the game is not started, do nothing
+       if (!gameManager.getIsGameStarted()) return;
+
+        const _clickedCell = event.target;
        // Early return if the cell already has a token in it.
        if (_clickedCell.hasChildNodes()) return;
        // Otherwise, calls the _addToken function.
@@ -116,9 +110,7 @@ const gameBoard = (() => {
     }
 
     return {clearBoard: ()=> {_clearBoard()},
-            checkForWin: ()=> _checkForWin(),
-            addCellListeners: () => _addCellListeners(),
-            removeCellListeners: () => _removeCellListeners()};
+            checkForWin: ()=> _checkForWin()};
 
 })();
 
@@ -158,14 +150,12 @@ const gameManager = (() => {
     function _winGame() {
         // Ends the game 
         _isGameStarted = false;
-        gameBoard.removeCellListeners();
 
         alert(`${_getCurrentPlayer().name} won!`);
     }
 
     function _startGame() {
         _isGameStarted = true;
-        gameBoard.addCellListeners();
     }
 
     ////////////
@@ -188,8 +178,9 @@ const gameManager = (() => {
 
     return {
         getCurrentPlayer: () => { return (_isPlayer1Turn ? _player1 : _player2); },
-        nextTurn: () => {_nextTurn();}
-    };
+        nextTurn: () => {_nextTurn();},
+        getIsGameStarted: () => { return _isGameStarted; }
+    }
 
 })();
 //#endregion
