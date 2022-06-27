@@ -8,7 +8,6 @@ const gameBoard = (() => {
     //////////////
 
     const _boardCells = document.querySelectorAll('.board-cell');
-    _boardCells.forEach((cell) => cell.addEventListener('click', _tryAddToken));
 
     const _clearBtn = document.querySelector('#clear-btn');
     _clearBtn.addEventListener('click', _clearBoard);
@@ -28,6 +27,16 @@ const gameBoard = (() => {
     ////////////////
     // DOM methods//
     ////////////////
+
+    // This function adds listeners to grid cells
+    function _addCellListeners() {
+        _boardCells.forEach((cell) => cell.addEventListener('click', _tryAddToken));
+    }
+
+    // This function removes the listeners from grid cells
+    function _removeCellListeners() {
+        _boardCells.forEach((cell) => cell.removeEventListener('click', _tryAddToken));
+    }
 
     // This function checks if the cell is empty before adding a token.
     function _tryAddToken(event) {
@@ -107,7 +116,9 @@ const gameBoard = (() => {
     }
 
     return {clearBoard: ()=> {_clearBoard()},
-            checkForWin: ()=> _checkForWin()};
+            checkForWin: ()=> _checkForWin(),
+            addCellListeners: () => _addCellListeners(),
+            removeCellListeners: () => _removeCellListeners()};
 
 })();
 
@@ -127,18 +138,34 @@ const gameManager = (() => {
     // Local state//
     ////////////////
 
+    // Players
     const _player1 = playerFactory("Player 1", "tokenA");
     const _player2 = playerFactory("Player 2", "tokenB");
 
     let _isPlayer1Turn = true;  // Initialized as true because Player 1 goes first, could change.
+
+    // Game states 
+    let _isGameStarted = false;  // Starts out false; would be better as events once I learn how 
+
+    // Start button
+    const startBtn = document.querySelector('#start-btn');
+    startBtn.addEventListener('click', _startGame);
 
     ///////////////////////
     // Private functions //
     ///////////////////////
 
     function _winGame() {
+        // Ends the game 
+        _isGameStarted = false;
+        gameBoard.removeCellListeners();
+
         alert(`${_getCurrentPlayer().name} won!`);
-        
+    }
+
+    function _startGame() {
+        _isGameStarted = true;
+        gameBoard.addCellListeners();
     }
 
     ////////////
