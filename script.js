@@ -10,6 +10,18 @@ const gameBoard = (() => {
     const _boardCells = document.querySelectorAll('.board-cell');
     _boardCells.forEach((cell) => cell.addEventListener('click', _tryAddToken));
 
+    // Indices for rows/cols/diagonals
+    const row1 = [0, 1, 2];
+    const row2 = [3, 4, 5];
+    const row3 = [6, 7, 8];
+    const col1 = [0, 3, 6];
+    const col2 = [1, 4, 7];
+    const col3 = [2, 5, 8];
+    const diag1 = [0, 4, 8];
+    const diag2 = [2, 4, 6];
+
+    const allRowsAndCols = [row1, row2, row3, col1, col2, col3, diag1, diag2];
+
     ////////////////
     // DOM methods//
     ////////////////
@@ -36,6 +48,46 @@ const gameBoard = (() => {
         gameManager.nextTurn();
     }
 
+    //////////////////////
+    // Checking for win //
+    //////////////////////
+
+    function _checkForWin() {
+        let conditionFulfilled = false;
+
+        // Go through each row, column, or diagonal
+        allRowsAndCols.forEach( (array) => {
+            if(_checkEveryCell(array)) conditionFulfilled = true;
+        });
+
+        // If it went through the whole loop and could not find a match:
+        return conditionFulfilled;
+    }
+
+    function _checkEveryCell(array) {
+        const token = gameManager.getCurrentPlayer().token;
+
+        let testPassed = true; // Will change to false as soon as an element other than specified token is found
+
+        array.forEach(i => {
+            if (!(_boardCells[i].hasChildNodes()) ||
+            !(_boardCells[i].firstChild.classList.contains(token)))  {
+                testPassed = false;
+            }
+        });
+
+        return testPassed;
+
+        /*array.every(cell => {
+            // Checks for empty cells to avoid null ref exceptions
+            if (_boardCells[cell].hasChildNodes()) {
+                // If not null, check if it has the specified token
+                _boardCells[cell].firstChild.classList.contains(token);
+            }
+        });*/
+    }
+
+
     ////////////
     // PUBLIC //
     ////////////
@@ -49,7 +101,8 @@ const gameBoard = (() => {
         })
     }
 
-    return {clearBoard: ()=> {_clearBoard()}};
+    return {clearBoard: ()=> {_clearBoard()},
+            checkForWin: ()=> _checkForWin()};
 
 })();
 
