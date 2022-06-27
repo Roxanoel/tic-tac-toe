@@ -10,6 +10,9 @@ const gameBoard = (() => {
     const _boardCells = document.querySelectorAll('.board-cell');
     _boardCells.forEach((cell) => cell.addEventListener('click', _tryAddToken));
 
+    const _clearBtn = document.querySelector('#clear-btn');
+    _clearBtn.addEventListener('click', _clearBoard);
+
     // Indices for rows/cols/diagonals
     const row1 = [0, 1, 2];
     const row2 = [3, 4, 5];
