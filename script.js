@@ -160,6 +160,13 @@ const gameManager = (() => {
         alert(`${_getCurrentPlayer().name} won!`);
     }
 
+    function _gameTied() {
+        // Ends the game 
+        _isGameStarted = false;
+
+        alert("It's a tie!");
+    }
+
     function _startGame() {
         _isGameStarted = true;
     }
@@ -173,6 +180,11 @@ const gameManager = (() => {
         // If the game was won, launch game won behaviour and do not change turn.
         if (gameBoard.checkForWin()) {
             _winGame();
+            return;
+        }
+        // Otherwise, checks for a tie, and if so, launches tie behaviour and early returns.
+        if (gameBoard.checkForTie()) {
+            _gameTied();
             return;
         }
         _isPlayer1Turn = !_isPlayer1Turn;
