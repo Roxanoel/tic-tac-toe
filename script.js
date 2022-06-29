@@ -224,7 +224,7 @@ const uiDisplay = (() => {
     let player2Name = defaultPlayer2Name;
 
     // HUD 
-    const hud = document.querySelector('.hud');
+    const _hud = document.querySelector('.hud');
 
     // PRIVATE FUNCTIONS //
 
@@ -251,6 +251,13 @@ const uiDisplay = (() => {
         _close(_selectionContainer);
 
         gameManager.startGame();
+
+        _open(_hud);
+        _setupHUD();
+    }
+
+    function _setupHUD() {
+        // Add functionality later, retrieve player names from the player objects...
     }
 })();
 
