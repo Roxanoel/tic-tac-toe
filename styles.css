@@ -88,3 +88,7 @@ footer {
     background-color: var(--steel-teal);
     color: white;
 }
+
+.invisible {
+    display: none;
+}
