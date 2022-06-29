@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Mabook';
+    src: url('fonts/mabook/mabook-webfont.woff') format('woff');
+    src: url('fonts/mabook/mabook-webfont.woff2') format('woff2');
+    src: url('fonts/mabook/Mabook.ttf') format('truetype');
+}
+
 :root {
     /*Color defs*/
     --eggshell: #F4F1DE;
@@ -29,6 +36,8 @@ header {
 
 h1 {
     text-align: center;
+    font-family: 'Mabook';
+    letter-spacing: 2px;
 }
 
 main {
