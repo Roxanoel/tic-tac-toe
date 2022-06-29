@@ -34,7 +34,7 @@ const gameBoard = (() => {
        // If the game is not started, do nothing
        if (!gameManager.getIsGameStarted()) return;
 
-        const _clickedCell = event.target;
+        const _clickedCell = event.currentTarget;
        // Early return if the cell already has a token in it.
        if (_clickedCell.hasChildNodes()) return;
        // Otherwise, calls the _addToken function.
