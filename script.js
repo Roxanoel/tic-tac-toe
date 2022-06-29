@@ -239,7 +239,7 @@ const uiDisplay = (() => {
 
         _closeModal();
 
-        console.log(`Player 1: ${player1Name}. Player 2: ${player2Name}.`);
+        gameManager.startGame();
     }
 })();
 
