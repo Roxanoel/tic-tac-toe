@@ -65,7 +65,7 @@ footer {
     display: grid;
     grid-template-columns: 40% auto;
     height: 100%;
-    width: 50%;
+    width: 80%;
     align-items: center;
     justify-items: center;
 }
