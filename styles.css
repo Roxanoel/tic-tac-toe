@@ -183,6 +183,11 @@ input {
     font-size: 1rem;
 }
 
+#submit-btn {
+    background-color: #8F5D5D;
+    color: white;
+}
+
 .invisible {
     display: none;
 }
