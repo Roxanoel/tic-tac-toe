@@ -62,7 +62,7 @@ const gameBoard = (() => {
     function _checkForWin() {
         let conditionFulfilled = false;
 
-        // Go through each row, column, or diagonal
+        // Go through each line to check for a match
         allRowsAndCols.forEach( (array) => {
             if(_checkEveryCell(array)) conditionFulfilled = true;
         });
