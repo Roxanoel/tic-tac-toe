@@ -164,7 +164,9 @@ const gameManager = (() => {
         alert("It's a tie!");
     }
 
-    function _startGame() {
+    function _startGame(name1, name2) {
+        _player1.name = name1;
+        _player2.name = name2;
         _isGameStarted = true;
     }
 
@@ -194,7 +196,7 @@ const gameManager = (() => {
     return {
         getCurrentPlayer: () => { return (_isPlayer1Turn ? _player1 : _player2); },
         nextTurn: () => {_nextTurn();},
-        startGame: () => _startGame(),
+        startGame: (name1, name2) => _startGame(name1, name2),
         getIsGameStarted: () => { return _isGameStarted; }
     }
 
@@ -250,7 +252,7 @@ const uiDisplay = (() => {
 
         _close(_selectionContainer);
 
-        gameManager.startGame();
+        gameManager.startGame(player1Name, player2Name);
 
         _open(_hud);
         _setupHUD();
