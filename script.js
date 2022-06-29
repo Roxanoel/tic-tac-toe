@@ -145,9 +145,6 @@ const gameManager = (() => {
     // Game states 
     let _isGameStarted = false;  // Starts out false; would be better as events once I learn how 
 
-    // Start button
-    const startBtn = document.querySelector('#start-btn');
-    startBtn.addEventListener('click', _startGame);
 
     ///////////////////////
     // Private functions //
@@ -197,12 +194,21 @@ const gameManager = (() => {
     return {
         getCurrentPlayer: () => { return (_isPlayer1Turn ? _player1 : _player2); },
         nextTurn: () => {_nextTurn();},
+        startGame: () => _startGame(),
         getIsGameStarted: () => { return _isGameStarted; }
     }
 
 })();
 //#endregion
 
-//#region Global 
+//#region uiDisplay 
+
+const uiDisplay = (() => {
+
+    // Start button
+    const startBtn = document.querySelector('#start-btn');
+    startBtn.addEventListener('click', gameManager.startGame); // FOR NOW, might change to some form of init function!
+
+})();
 
 //#endregion
