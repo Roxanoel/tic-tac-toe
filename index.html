@@ -13,9 +13,24 @@
         <h1>Tic-tac-boom!</h1>
     </header>
     <main>
-         <div class="selection-container invisible">
-            <!--Will be for picking which player to play and displaying whose turn it is-->
-         </div>
+        <div class="selection-container">
+            <!--Will be for picking which player to play + entering names-->
+            <div class="modal-container">
+                <div class="modal-contents">
+                    <form id="player-setup">
+                        <h2>Player names</h2>
+                        <label for="player1-name">Player 1:</label>
+                        <input type="text" id="player1-name" placeholder="Player 1" name="player1-name">
+                        <label for="player2-name">Player 2:</label>
+                        <input type="text" id="player2-name" placeholder="Player 2" name="player2-name">
+                        <button id="submit-btn">Start game!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="hud">
+            <!--Will be for displaying player's names and tokens + whose turn it is-->
+        </div>
         <div id="game-board">
             <div class="board-cell" data-index="0"></div>
             <div class="board-cell" data-index="1"></div>
