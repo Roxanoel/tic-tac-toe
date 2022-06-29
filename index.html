@@ -14,7 +14,7 @@
     </header>
     <main>
         <div class="selection-container invisible">
-            <!--Will be for picking which player to play + entering names-->
+            <!--For picking which player to play + entering names-->
             <div class="modal-container">
                 <div class="modal-contents">
                     <form id="player-setup">
@@ -30,6 +30,19 @@
         </div>
         <div class="hud">
             <!--Will be for displaying player's names and tokens + whose turn it is-->
+            <div class="player-display">
+                <div class="player1-hud">
+                    <div class="tokenA"></div>
+                    <div class="name-display">Player 1</div>
+                </div>
+                <div class="player2-hud">
+                    <div class="tokenB"></div>
+                    <div class="name-display">Player 1</div>
+                </div>
+                <div class="turn-display">
+                    It's Player 1s' turn!
+                </div>
+            </div>
         </div>
         <div id="game-board">
             <div class="board-cell" data-index="0"></div>

@@ -52,6 +52,34 @@ footer {
     height: 100%;
 }
 
+.player-display {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    justify-items: center;
+    width: 50vh;
+    height: 10rem;
+}
+
+.player1-hud, .player2-hud {
+    display: grid;
+    grid-template-columns: 40% auto;
+    height: 100%;
+    width: 50%;
+    align-items: center;
+    justify-items: center;
+}
+
+.name-display {
+    font-size: 1.5rem;
+    width: 100%;
+}
+
+.turn-display {
+    grid-column: 1 / -1;
+    font-size: 2rem;
+}
+
 #game-board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
