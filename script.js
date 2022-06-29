@@ -187,6 +187,7 @@ const gameManager = (() => {
             return;
         }
         _isPlayer1Turn = !_isPlayer1Turn;
+        uiDisplay.updateTurnDisplay();
     }
 
     function _getCurrentPlayer() {
@@ -229,6 +230,7 @@ const uiDisplay = (() => {
     const _hud = document.querySelector('.hud');
     const _hudPlayer1 = document.querySelector('.player1-hud .name-display');
     const _hudPlayer2 = document.querySelector('.player2-hud .name-display');
+    const _turnDisplay = document.querySelector('.turn-display');
 
     // PRIVATE FUNCTIONS //
 
@@ -268,7 +270,13 @@ const uiDisplay = (() => {
     }
 
     function _updateTurnDisplay() {
+        _turnDisplay.textContent = `It's ${gameManager.getCurrentPlayer().name}'s turn!`;
+    }
 
+    // public
+
+    return {
+        updateTurnDisplay: () => _updateTurnDisplay()
     }
 
 })();
