@@ -212,9 +212,28 @@ const uiDisplay = (() => {
     // Modal menu
     const _selectionContainer = document.querySelector('.selection-container');
 
+    // Form 
+    const _submitBtn = document.querySelector('#submit-btn');
+    _submitBtn.addEventListener('click', _submitSelection);
+    const player1NameField = document.querySelector('#player1-name');
+    const player2NameField = document.querySelector('#player2-name');
+
+    const defaultPlayer1Name = 'Player 1';
+    const defaultPlayer2Name = 'Player 2';
+    let player1Name = defaultPlayer1Name;
+    let player2Name = defaultPlayer2Name;
+
     // PRIVATE FUNCTIONS //
     function _openModal() {
         _selectionContainer.classList.remove('invisible');
+    }
+
+    function _submitSelection(event) {
+        player1Name = (player1NameField.value === '') ? defaultPlayer1Name : player1NameField.value;
+
+        player2Name = (player2NameField.value === '') ? defaultPlayer2Name : player2NameField.value;
+
+        console.log(`Player 1: ${player1Name}. Player 2: ${player2Name}.`);
     }
 })();
 
