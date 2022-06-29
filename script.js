@@ -206,9 +206,16 @@ const gameManager = (() => {
 const uiDisplay = (() => {
 
     // Start button
-    const startBtn = document.querySelector('#start-btn');
-    startBtn.addEventListener('click', gameManager.startGame); // FOR NOW, might change to some form of init function!
+    const _startBtn = document.querySelector('#start-btn');
+    _startBtn.addEventListener('click', _openModal); 
 
+    // Modal menu
+    const _selectionContainer = document.querySelector('.selection-container');
+
+    // PRIVATE FUNCTIONS //
+    function _openModal() {
+        _selectionContainer.classList.remove('invisible');
+    }
 })();
 
 //#endregion
