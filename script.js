@@ -95,7 +95,11 @@ const gameBoard = (() => {
         });*/
     }
 
-
+    function _checkForTie() {
+        const _boardCellsArray = Array.from(_boardCells);
+        return (_boardCellsArray.every(cell => cell.hasChildNodes())) 
+    }
+    
     ////////////
     // PUBLIC //
     ////////////
@@ -109,8 +113,10 @@ const gameBoard = (() => {
         })
     }
 
-    return {clearBoard: ()=> {_clearBoard()},
-            checkForWin: ()=> _checkForWin()};
+    return { clearBoard: ()=> {_clearBoard()},
+            checkForWin: ()=> _checkForWin(),
+            checkForTie: ()=> _checkForTie()
+        };
 
 })();
 
