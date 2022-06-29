@@ -106,6 +106,8 @@ footer {
     height: fit-content;
     overflow: auto;
     background-color: var(--deep-champagne);
+    border-radius: 10px;
+    padding: 1rem;
 }
 
 #player-setup {
