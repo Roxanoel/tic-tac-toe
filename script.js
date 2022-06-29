@@ -227,6 +227,8 @@ const uiDisplay = (() => {
 
     // HUD 
     const _hud = document.querySelector('.hud');
+    const _hudPlayer1 = document.querySelector('.player1-hud .name-display');
+    const _hudPlayer2 = document.querySelector('.player2-hud .name-display');
 
     // PRIVATE FUNCTIONS //
 
@@ -259,8 +261,16 @@ const uiDisplay = (() => {
     }
 
     function _setupHUD() {
-        // Add functionality later, retrieve player names from the player objects...
+        _hudPlayer1.textContent = player1Name;
+        _hudPlayer2.textContent = player2Name;
+
+        _updateTurnDisplay();
     }
+
+    function _updateTurnDisplay() {
+
+    }
+
 })();
 
 //#endregion
