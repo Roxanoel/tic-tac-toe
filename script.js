@@ -228,10 +228,16 @@ const uiDisplay = (() => {
         _selectionContainer.classList.remove('invisible');
     }
 
+    function _closeModal() {
+        _selectionContainer.classList.add('invisible');
+    }
+
     function _submitSelection(event) {
         player1Name = (player1NameField.value === '') ? defaultPlayer1Name : player1NameField.value;
 
         player2Name = (player2NameField.value === '') ? defaultPlayer2Name : player2NameField.value;
+
+        _closeModal();
 
         console.log(`Player 1: ${player1Name}. Player 2: ${player2Name}.`);
     }
