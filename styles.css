@@ -113,6 +113,7 @@ footer {
 #player-setup {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
 }
 
 .invisible {
