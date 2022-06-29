@@ -118,6 +118,7 @@ footer {
 #clear-btn {
     background-color: var(--steel-teal);
     color: white;
+    display: none;
 }
 
 .modal-container {
