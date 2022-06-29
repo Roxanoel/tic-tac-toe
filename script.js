@@ -207,7 +207,7 @@ const uiDisplay = (() => {
 
     // Start button
     const _startBtn = document.querySelector('#start-btn');
-    _startBtn.addEventListener('click', _openModal); 
+    _startBtn.addEventListener('click', _startGameSetup); 
 
     // Modal menu
     const _selectionContainer = document.querySelector('.selection-container');
@@ -223,13 +223,24 @@ const uiDisplay = (() => {
     let player1Name = defaultPlayer1Name;
     let player2Name = defaultPlayer2Name;
 
+    // HUD 
+    const hud = document.querySelector('.hud');
+
     // PRIVATE FUNCTIONS //
-    function _openModal() {
-        _selectionContainer.classList.remove('invisible');
+
+    function _startGameSetup() {
+        // Clears the board in case there was something there
+        gameBoard.clearBoard();
+        // Opens modal for entering player names
+        _open(_selectionContainer);
     }
 
-    function _closeModal() {
-        _selectionContainer.classList.add('invisible');
+    function _open(element) {
+        element.classList.remove('invisible');
+    }
+
+    function _close(element) {
+        element.classList.add('invisible');
     }
 
     function _submitSelection(event) {
@@ -237,7 +248,7 @@ const uiDisplay = (() => {
 
         player2Name = (player2NameField.value === '') ? defaultPlayer2Name : player2NameField.value;
 
-        _closeModal();
+        _close(_selectionContainer);
 
         gameManager.startGame();
     }
